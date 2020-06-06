@@ -3,7 +3,7 @@
  *
  * List all the features
  */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 
@@ -13,7 +13,15 @@ import List from './List';
 import ListItem from './ListItem';
 import ListItemTitle from './ListItemTitle';
 
+import { MyContext } from '../../MyProvider';
+
 export default function FeaturePage() {
+  const metaContext = useContext(MyContext);
+
+  const changeMessage = () => {
+    metaContext.state.setMessage(`My message${Math.random()}`);
+  };
+
   return (
     <div>
       <Helmet>
@@ -26,6 +34,10 @@ export default function FeaturePage() {
       <H1>
         <FormattedMessage {...messages.header} />
       </H1>
+      <button type="button" onClick={changeMessage}>
+        Change context with provider
+      </button>
+      <h2>{metaContext.state.message}</h2>
       <List>
         <ListItem>
           <ListItemTitle>
