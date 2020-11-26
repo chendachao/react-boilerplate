@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unused-state */
 import React, { Component, createContext } from 'react';
 
 export const MyContext = createContext();
